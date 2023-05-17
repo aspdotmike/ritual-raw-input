@@ -8,8 +8,17 @@ from langchain.chains import LLMChain, SequentialChain
 
 os.environ['OPENAI_API_KEY'] = apikey
 
-st.title('Youtube GPT Creator')
-prompt = st.text_input('Enter a prompt for the AI to complete:')
+st.title('Problem')
+prompt = st.text_input('What are you trying to solve?:')
+
+st.title('Challenge #1')
+prompt = st.text_input('What is one thing that makes solving this difficult:')
+
+st.title('Challenge #2')
+prompt = st.text_input('What is a second thing that makes solving this difficult:')
+
+st.title('Challenge #3')
+prompt = st.text_input('What is a third thing that makes solving this difficult:')
 
 #Prompt templates
 title_template = PromptTemplate(
