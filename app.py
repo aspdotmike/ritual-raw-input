@@ -35,13 +35,13 @@ prompt_challenge3 = st.text_input('What is a third thing that makes solving this
 #Prompt templates
 statement_template = PromptTemplate(
     input_variables = ['problem', 'challenge1', 'challenge2', 'challenge3'],
-    template = 'Write me a problem statement based on this problem: {problem} and these challenges to solving the problem: {challenge1}, {challenge2}, {challenge3}'
+    template = 'Write me a problem statement based on this problem: {problem} and these challenges to solving the problem: {challenge1}, {challenge2}, {challenge3} using less than 240 characters.'
 )
 
 #Prompt templates
 title_template = PromptTemplate(
     input_variables = ['statement'],
-    template = 'write me a project title about {statement}'
+    template = 'write me a project title about {statement} using less than 20 characters'
 )
 
 #Llms
