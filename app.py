@@ -44,11 +44,18 @@ title_template = PromptTemplate(
     template = 'write me a project title about {statement} using less than 20 characters'
 )
 
+#Prompt templates
+competency_template = PromptTemplate(
+    input_variables = ['statement'],
+    template = 'provide a list of competenecies that would be helpful for an individual to have to solve: {statement}'
+)
+
 #Llms
 llm = OpenAI(temperature=0.9)
 statement_chain = LLMChain(llm=llm, prompt=statement_template, verbose=True, output_key='statement')
 title_chain = LLMChain(llm=llm, prompt=title_template, verbose=True, output_key='title')
-sequential_chain = SequentialChain(chains=[statement_chain, title_chain], input_variables=['problem', 'challenge1', 'challenge2', 'challenge3'], output_variables=['statement', 'title'], verbose = True)
+competency_chain = LLMChain(llm=llm, prompt=competency_template, verbose=True, output_key='competencies')
+sequential_chain = SequentialChain(chains=[statement_chain, title_chain, competency_chain], input_variables=['problem', 'challenge1', 'challenge2', 'challenge3'], output_variables=['statement', 'title', 'competencies'], verbose = True)
 
 
 # Show stuff to the screen if the user has entered a prompt
@@ -56,3 +63,4 @@ if prompt_problem:
     response = sequential_chain({'problem': prompt_problem, 'challenge1': prompt_challenge1, 'challenge2': prompt_challenge2, 'challenge3': prompt_challenge3})
     st.write(response['statement'])
     st.write(response['title'])
+    st.write(response['competencies'])
