@@ -1,4 +1,5 @@
 import os
+import json
 from apikey import apikey
 
 import streamlit as st
@@ -13,7 +14,7 @@ prompt = st.text_input('Your input, such as a question...:')
 
 question_template = PromptTemplate(
     input_variables = ['raw_input'],
-    template='Make a question out of the following sentence: "{{raw_input}}"',
+    template='Make a question out of the following sentence: "{raw_input}"',
 )
 
 #Llms
@@ -23,5 +24,6 @@ question_chain = LLMChain(llm=llm, prompt = question_template)
 
 # Show stuff to the screen if the user has entered a prompt
 if prompt:
-    response = question_chain.run(raw_input=prompt)
+    st.write(json.dumps(prompt)
+    response = question_chain.run(raw_input=json.dumps(prompt))
     st.write(response)
