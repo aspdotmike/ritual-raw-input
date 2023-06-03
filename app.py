@@ -9,7 +9,7 @@ from langchain.chains import LLMChain, SequentialChain
 os.environ['OPENAI_API_KEY'] = apikey
 
 st.title('Actionable Input')
-prompt = st.text_input('Your input, such as a question?:')
+prompt = st.text_input('Your input, such as a question...:')
 
 question_template = PromptTemplate(
     input_variables = ['raw_input'],
