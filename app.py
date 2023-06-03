@@ -13,7 +13,7 @@ prompt = st.text_input('Your input, such as a question...:')
 
 question_template = PromptTemplate(
     input_variables = ['raw_input'],
-    template='Make a question out of the following sentence: "{raw_input}"',
+    template='Make a question out of the following sentence: "{{raw_input}}"',
 )
 
 #Llms
