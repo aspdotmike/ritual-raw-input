@@ -6,7 +6,9 @@ from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SequentialChain
 
-os.environ['OPENAI_API_KEY'] = apikey
+#os.environ['OPENAI_API_KEY'] = apikey
+
+os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
 st.title('Actionable Input')
 prompt = st.text_input('Your input, such as a question...:')
