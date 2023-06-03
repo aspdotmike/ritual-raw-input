@@ -24,6 +24,6 @@ question_chain = LLMChain(llm=llm, prompt = question_template)
 
 # Show stuff to the screen if the user has entered a prompt
 if prompt:
-    escaped_prompt = json.dumps(prompt)
-    response = question_chain.run(raw_input=escaped_prompt)
+    #escaped_prompt = json.dumps(prompt)
+    response = question_chain.run(raw_input=prompt)
     st.write(response)
